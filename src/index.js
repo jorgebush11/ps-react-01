@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
 
-function SayHi() {
-	return <div>Hello World...!</div>;
+import "../public/styles.scss";
+
+const root = document.querySelector("#root");
+
+function logRandom() {
+	console.log(Math.random());
 }
 
-ReactDom.render(<SayHi />, document.getElementById("root"));
+function Button() {
+	const [counter, setCounter] = useState(0);
+	//return <button onClick={logRandom}>{counter}</button>;
+	return <button onClick={(_) => setCounter(counter + 1)}>{counter}</button>;
+}
+
+ReactDom.render(<Button />, root);
