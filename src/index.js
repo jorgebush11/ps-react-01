@@ -1,12 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDom from "react-dom";
 
-import App from "./App";
+function SayHi() {
+	return <div>Hello World...!</div>;
+}
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElement
-);
+ReactDom.render(<SayHi />, document.getElementById("root"));
