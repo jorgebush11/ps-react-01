@@ -6,7 +6,9 @@ import "../public/styles.scss";
 const root = document.querySelector("#root");
 
 function Button(props) {
-	return <button onClick={props.clickFunction}>+1</button>;
+	const handleClick = () => props.clickFunction(props.increment);
+
+	return <button onClick={handleClick}>+{props.increment}</button>;
 }
 
 function Display(props) {
@@ -15,10 +17,14 @@ function Display(props) {
 
 function App() {
 	const [counter, setCounter] = useState(0);
-	const incrementCounter = () => setCounter(counter + 1);
+	const incrementCounter = (incrementValue) =>
+		setCounter(counter + incrementValue);
 	return (
 		<>
-			<Button clickFunction={incrementCounter} />
+			<Button clickFunction={incrementCounter} increment={1} />
+			<Button clickFunction={incrementCounter} increment={5} />
+			<Button clickFunction={incrementCounter} increment={10} />
+			<Button clickFunction={incrementCounter} increment={100} />
 			<Display msg={counter} />
 		</>
 	);
