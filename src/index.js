@@ -5,9 +5,23 @@ import "../public/styles.scss";
 
 const root = document.querySelector("#root");
 
-function Button() {
-	const [counter, setCounter] = useState(5);
-	return <button onClick={() => setCounter(counter * 2)}>{counter}</button>;
+function Button(props) {
+	return <button onClick={props.clickFunction}>+1</button>;
 }
 
-ReactDom.render(<Button />, root);
+function Display(props) {
+	return <div>{props.msg}</div>;
+}
+
+function App() {
+	const [counter, setCounter] = useState(0);
+	const incrementCounter = () => setCounter(counter + 1);
+	return (
+		<>
+			<Button clickFunction={incrementCounter} />
+			<Display msg={counter} />
+		</>
+	);
+}
+
+ReactDom.render(<App />, root);
